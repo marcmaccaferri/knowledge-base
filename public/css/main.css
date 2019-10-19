@@ -1,0 +1,64 @@
+/*******************************************
+NAVBAR STYLES
+********************************************/
+#loginDropdownMenuBox {
+    min-width: 500px;
+    min-height: 250px;
+}
+
+
+/*******************************************
+GENERAL STYLES
+********************************************/
+#searchSection {
+    background: rgb(62, 255, 203);
+    background: linear-gradient(133deg, rgba(62, 255, 203, 1) 0%, rgba(162, 45, 253, 1) 100%);
+    padding-top: 100px;
+    padding-bottom: 100px;
+    max-width: 100%;
+}
+
+ul {
+    list-style: none;
+    margin-left: -35px;
+}
+
+/*******************************************
+CATEGORY STYLES
+********************************************/
+
+.categoryTitle {
+    color: #18456c;
+    margin-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.categoryTitle a {
+    color: #18456c;
+}
+
+.categoryTitle:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f07b";
+    margin-right: 20px;
+}
+
+.articleTitle {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    color: black;
+    font-size: 15px;
+}
+
+.articleTitle a {
+    color: black;
+    font-size: 15px;
+}
+
+.articleTitle a:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f15c";
+    margin-right: 20px;
+}
