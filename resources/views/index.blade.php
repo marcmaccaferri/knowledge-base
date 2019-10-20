@@ -30,6 +30,11 @@
     </div>
 
     <div class="container">
+        @if(session()->get('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div><br />
+        @endif
         <div class="row mt-5">
             <div class="col-md-4 mb-5">
                 <h5 class="categoryTitle"><a href="#">General <small class="text-muted">(5)</small></a></h5>

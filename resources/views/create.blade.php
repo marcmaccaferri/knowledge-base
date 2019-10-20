@@ -14,23 +14,23 @@
 </head>
 
 <body>
-
-    <form method="POST">
+    <form method="post" action="{{ route('articles.store') }}">
         <div class="form-group">
+            @csrf
             <div class="sidebar-container">
                 <ul class="sidebar-navigation">
                     <div class="sidebar-logo text-center">ARTICLE SETTINGS</div>
                     <div class="container mt-5">
                         <select class="form-control form-control-sm post_category" id="Post_Category"
-                            name="Post_Category">
+                            name="Article_Category">
                             <option selected disabled>Select Main Category...</option>
                             <option value="Service">Service</option>
                             <option value="Retail">Retail</option>
                         </select>
                     </div>
                     <div class="container mt-5">
-                        <select class="form-control form-control-sm post_category" id="Post_Sub_Category"
-                            name="Post_Sub_Category">
+                        <select class="form-control form-control-sm post_category" id="Article_Sub_Category"
+                            name="Article_Sub_Category">
                             <option selected disabled>Select Sub Category...</option>
                             <option value="Invenotry Management">Invenotry Management</option>
                             <option value="Repair Guide">Repair Guide</option>
@@ -47,23 +47,37 @@
             </div>
         </div>
 
+        @if ($errors->any())
+        <div class="container mt-5">
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div><br />
+        @endif
+
         <div class="container">
             <div class="row mt-5">
                 <div class="col-lg-12">
                     <div class="form-group">
-                        <h4 for="Article_Title mb-3">Article Title</h4>
-                        <input type="text" class="form-control" id="Article_Title" placeholder="Enter Article Title">
+                        <h4 class="mb-3">Article Title</h4>
+                        <input type="text" class="form-control" name="Article_Title" id="Article_Title"
+                            placeholder="Enter Article Title">
                     </div>
                 </div>
             </div>
             <hr>
             <div class="mt-5">
                 <h4>Article Text</h4>
-                <textarea id="summernote"></textarea>
+                <textarea name="Article_Body" id="summernote"></textarea>
             </div>
             <button type="submit" class="btn btn-primary float-right mt-3 ">Submit</button>
         </div>
     </form>
+
     <script src="{{ asset('js/article.js') }}"></script>
 </body>
 
