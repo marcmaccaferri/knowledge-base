@@ -57,7 +57,7 @@ class ArticleController extends Controller
         ]);
         $article = Article::create($validatedData);
 
-        return redirect('/articles')->with('success', 'Article was successfully added');
+        return redirect('/articles')->with('success', 'Article has been successfully added');
     }
 
     /**
@@ -102,7 +102,7 @@ class ArticleController extends Controller
         ]);
         Article::whereId($id)->update($validatedData);
 
-        return redirect('/articles')->with('success', 'Article is successfully updated');
+        return redirect('/articles')->with('success', 'Article has been successfully updated');
     }
 
     /**
@@ -113,6 +113,9 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article = Article::findOrFail($id);
+        $article->delete();
+
+        return redirect('/articles')->with('success', 'Article has been successfully deleted');
     }
 }
