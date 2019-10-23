@@ -53,7 +53,7 @@ class ArticleController extends Controller
             'Article_Category' => 'required|max:255',
             'Article_Sub_Category' => 'required|max:255',
             'Article_Title' => 'required|max:255',
-            'Article_Body' => 'required|max:255',
+            'Article_Body' => 'required',
         ]);
         $article = Article::create($validatedData);
 
@@ -98,7 +98,7 @@ class ArticleController extends Controller
             'Article_Category' => 'required|max:255',
             'Article_Sub_Category' => 'required|max:255',
             'Article_Title' => 'required|max:255',
-            'Article_Body' => 'required|max:255',
+            'Article_Body' => 'required',
         ]);
         Article::whereId($id)->update($validatedData);
 

@@ -4,11 +4,7 @@
 <head>
     {{-- CALL IN THE MAIN HEAD --}}
     @include("layouts.partials.head.mainHead")
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+    @include("layouts.partials.head.summernote")
     <link href="{{ asset('css/post.css') }}" rel="stylesheet">
 
 </head>
@@ -55,6 +51,9 @@
                     <li>{{ $error }}</li>
                     @endforeach
                 </ul>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         </div><br />
         @endif
@@ -65,14 +64,14 @@
                     <div class="form-group">
                         <h4 class="mb-3">Article Title</h4>
                         <input type="text" class="form-control" name="Article_Title" id="Article_Title"
-                            placeholder="Enter Article Title">
+                            placeholder="Enter Article Title" value="{{Request::old('Article_Title')}}">
                     </div>
                 </div>
             </div>
             <hr>
             <div class="mt-5">
                 <h4>Article Text</h4>
-                <textarea name="Article_Body" id="summernote"></textarea>
+                <textarea name="Article_Body" id="summernote">{{Request::old('Article_Body')}}</textarea>
             </div>
             <button type="submit" class="btn btn-primary float-right mt-3 ">Submit</button>
         </div>

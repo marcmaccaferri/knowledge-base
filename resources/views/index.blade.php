@@ -30,11 +30,7 @@
     </div>
 
     <div class="container mt-4">
-        @if(session()->get('success'))
-        <div class="alert alert-success">
-            {{ session()->get('success') }}
-        </div><br />
-        @endif
+        @include("layouts.partials.main.success")
         <div class="row mt-5">
 
             <div class="col-md-4 mb-5">
@@ -99,5 +95,6 @@
 </body>
 
 @include("layouts.partials.scripts.bootstrap")
+<script src="{{ asset('js/index.js') }}" defer></script>
 
 </html>
