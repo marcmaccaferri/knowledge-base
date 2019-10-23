@@ -30,14 +30,7 @@
     </div>
 
     <div class="container mt-4">
-        @if(session()->get('success'))
-        <div class="alert alert-success" id="Alert">
-            {{ session()->get('success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
+        @include("layouts.partials.main.success")
         <div class="row mt-5">
 
             <div class="col-md-4 mb-5">
