@@ -31,9 +31,12 @@
 
     <div class="container mt-4">
         @if(session()->get('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success" id="Alert">
             {{ session()->get('success') }}
-        </div><br />
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         @endif
         <div class="row mt-5">
 
@@ -99,5 +102,6 @@
 </body>
 
 @include("layouts.partials.scripts.bootstrap")
+<script src="{{ asset('js/index.js') }}" defer></script>
 
 </html>

@@ -51,6 +51,9 @@
                     <li>{{ $error }}</li>
                     @endforeach
                 </ul>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         </div><br />
         @endif
@@ -61,14 +64,14 @@
                     <div class="form-group">
                         <h4 class="mb-3">Article Title</h4>
                         <input type="text" class="form-control" name="Article_Title" id="Article_Title"
-                            placeholder="Enter Article Title">
+                            placeholder="Enter Article Title" value="{{Request::old('Article_Title')}}">
                     </div>
                 </div>
             </div>
             <hr>
             <div class="mt-5">
                 <h4>Article Text</h4>
-                <textarea name="Article_Body" id="summernote"></textarea>
+                <textarea name="Article_Body" id="summernote">{{Request::old('Article_Body')}}</textarea>
             </div>
             <button type="submit" class="btn btn-primary float-right mt-3 ">Submit</button>
         </div>
