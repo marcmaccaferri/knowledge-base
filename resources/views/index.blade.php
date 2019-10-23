@@ -29,34 +29,28 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container mt-4">
         @if(session()->get('success'))
         <div class="alert alert-success">
             {{ session()->get('success') }}
         </div><br />
         @endif
         <div class="row mt-5">
+
             <div class="col-md-4 mb-5">
                 <h5 class="categoryTitle"><a href="#">General <small class="text-muted">(5)</small></a></h5>
                 <hr>
                 <ul>
+                    @foreach($articles as $article)
                     <li>
-                        <h5 class="articleTitle"><a href="#">How to make an account</a></h5>
+                        <h5 class="articleTitle"><a href="/articles/{{$article->id}}">{{$article->Article_Title}}</a>
+                        </h5>
                     </li>
-                    <li>
-                        <h5 class="articleTitle"><a href="#">How to make an account</a></h5>
-                    </li>
-                    <li>
-                        <h5 class="articleTitle"><a href="#">How to make an account</a></h5>
-                    </li>
-                    <li>
-                        <h5 class="articleTitle"><a href="#">How to make an account</a></h5>
-                    </li>
-                    <li>
-                        <h5 class="articleTitle"><a href="#">How to make an account</a></h5>
-                    </li>
+                    @endforeach
+
                 </ul>
             </div>
+
             <div class="col-md-4 mb-5">
                 <h5 class="categoryTitle"><a href="#">General <small class="text-muted">(5)</small></a></h5>
                 <hr>

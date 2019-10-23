@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use Auth;
 
 class ArticleController extends Controller
 {
@@ -37,8 +38,18 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->belongsTo('App\User', 'id');
+        /*
+        $article = new Article();
+        $article->User_Id = Auth::user()->id;
+        $article->Article_Category = $request->input('Article_Category');
+        $article->Article_Sub_Category = $request->input('Article_Sub_Category');
+        $article->Article_Title = $request->input('Article_Title');
+        $article->Article_Body = $request->input('Article_Body');
+        */
+
+
         $validatedData = $request->validate([
+            'User_Id' => 'required|max:255',
             'Article_Category' => 'required|max:255',
             'Article_Sub_Category' => 'required|max:255',
             'Article_Title' => 'required|max:255',
@@ -68,7 +79,9 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $article = Article::findOrFail($id);
+
+        return view('edit', compact('article'));
     }
 
     /**

@@ -14,27 +14,46 @@
 </head>
 
 <body>
-    <form method="post" action="{{ route('articles.store') }}">
+    <form method="post" action="{{ route('articles.update', $article->id) }}">
         <div class="form-group">
             @csrf
+            @method('PATCH')
             <div class="sidebar-container">
                 <ul class="sidebar-navigation">
                     <div class="sidebar-logo text-center">ARTICLE SETTINGS</div>
                     <div class="container mt-5">
                         <select class="form-control form-control-sm post_category" id="Post_Category"
                             name="Article_Category">
+                            @if(isset($article->Article_Category))
+                            <option selected>{{$article->Article_Category}}</option>
+                            @else
                             <option selected disabled>Select Main Category...</option>
+                            @endif
+                            @if($article->Article_Category != 'Service')
                             <option value="Service">Service</option>
+                            @endif
+                            @if($article->Article_Category != 'Retail')
                             <option value="Retail">Retail</option>
+                            @endif
                         </select>
                     </div>
                     <div class="container mt-5">
                         <select class="form-control form-control-sm post_category" id="Article_Sub_Category"
                             name="Article_Sub_Category">
-                            <option selected disabled>Select Sub Category...</option>
+                            @if(isset($article->Article_Sub_Category))
+                            <option selected>{{$article->Article_Sub_Category}}</option>
+                            @else
+                            <option selected disabled>Select Main Category...</option>
+                            @endif
+                            @if($article->Article_Sub_Category != 'Invenotry Management')
                             <option value="Invenotry Management">Invenotry Management</option>
+                            @endif
+                            @if($article->Article_Sub_Category != 'Repair Guide')
                             <option value="Repair Guide">Repair Guide</option>
+                            @endif
+                            @if($article->Article_Sub_Category != 'Point Of Sale')
                             <option value="Point Of Sale">Point Of Sale</option>
+                            @endif
                         </select>
                     </div>
                 </ul>
@@ -43,7 +62,7 @@
 
         <div class="container justify-content-center text-center">
             <div>
-                <h2>Create A New Article</h2>
+                <h2>Edit Article</h2>
             </div>
         </div>
 
@@ -65,14 +84,14 @@
                     <div class="form-group">
                         <h4 class="mb-3">Article Title</h4>
                         <input type="text" class="form-control" name="Article_Title" id="Article_Title"
-                            placeholder="Enter Article Title">
+                            placeholder="Enter Article Title" value="{{ $article->Article_Title }}">
                     </div>
                 </div>
             </div>
             <hr>
             <div class="mt-5">
                 <h4>Article Text</h4>
-                <textarea name="Article_Body" id="summernote"></textarea>
+                <textarea name="Article_Body" id="summernote">{{ $article->Article_Body }}</textarea>
             </div>
             <button type="submit" class="btn btn-primary float-right mt-3 ">Submit</button>
         </div>
