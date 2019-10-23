@@ -93,7 +93,16 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'User_Id' => 'required|max:255',
+            'Article_Category' => 'required|max:255',
+            'Article_Sub_Category' => 'required|max:255',
+            'Article_Title' => 'required|max:255',
+            'Article_Body' => 'required|max:255',
+        ]);
+        Article::whereId($id)->update($validatedData);
+
+        return redirect('/articles')->with('success', 'Article is successfully updated');
     }
 
     /**
