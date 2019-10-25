@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    protected $fillable = ['User_Id', 'Article_Category', 'Article_Sub_Category', 'Article_Title', 'Article_Body'];
+    protected $fillable = ['User_Id', 'category_id', 'Article_Title', 'Article_Body'];
+
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
 }

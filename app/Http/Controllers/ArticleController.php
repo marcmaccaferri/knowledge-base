@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use Auth;
+use App\Category;
+use App\User;
 
 class ArticleController extends Controller
 {
@@ -16,8 +18,9 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all();
+        $categories = Category::all();
 
-        return view('index', compact('articles'));
+        return view('/articles/index', compact('articles', 'categories'));
     }
 
     /**
@@ -27,7 +30,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('create');
+        $categories = Category::all();
+        return view('/articles/create', compact('categories'));
     }
 
     /**
@@ -38,20 +42,9 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        /*
-        $article = new Article();
-        $article->User_Id = Auth::user()->id;
-        $article->Article_Category = $request->input('Article_Category');
-        $article->Article_Sub_Category = $request->input('Article_Sub_Category');
-        $article->Article_Title = $request->input('Article_Title');
-        $article->Article_Body = $request->input('Article_Body');
-        */
-
-
         $validatedData = $request->validate([
             'User_Id' => 'required|max:255',
-            'Article_Category' => 'required|max:255',
-            'Article_Sub_Category' => 'required|max:255',
+            'category_id' => 'required|max:2',
             'Article_Title' => 'required|max:255',
             'Article_Body' => 'required',
         ]);
@@ -68,7 +61,11 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        $article = Article::findOrFail($id);
+        $categories = Category::all();
+        $user = User::where('id', $article->User_Id)->first();
+
+        return view('/articles/show', compact('article', 'categories', 'user'));
     }
 
     /**
@@ -80,8 +77,9 @@ class ArticleController extends Controller
     public function edit($id)
     {
         $article = Article::findOrFail($id);
+        $categories = Category::all();
 
-        return view('edit', compact('article'));
+        return view('/articles/edit', compact('article', 'categories'));
     }
 
     /**
@@ -95,14 +93,13 @@ class ArticleController extends Controller
     {
         $validatedData = $request->validate([
             'User_Id' => 'required|max:255',
-            'Article_Category' => 'required|max:255',
-            'Article_Sub_Category' => 'required|max:255',
+            'category_id' => 'required|max:2',
             'Article_Title' => 'required|max:255',
             'Article_Body' => 'required',
         ]);
         Article::whereId($id)->update($validatedData);
 
-        return redirect('/articles')->with('success', 'Article has been successfully updated');
+        return redirect('/articles', [$id]);
     }
 
     /**
