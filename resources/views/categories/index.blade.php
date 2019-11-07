@@ -2,43 +2,15 @@
 <html lang="{{ app()->getLocale() }}">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel Tutorial</title>
-
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-
+    {{-- CALL IN THE MAIN HEAD --}}
+    @include("layouts.partials.head.mainHead")
+    <link href="{{ asset('css/category.css') }}" rel="stylesheet">
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Laravel Tutorial</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    @include("layouts.partials.header.mainHeader")
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            {{-- <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> --}}
-            <a href="#" class="btn btn-success my-2 my-sm-0">Create Post</a>
-            {{-- </form> --}}
-        </div>
-    </nav>
     <div class="container py-3">
 
         <div class="modal" tabindex="-1" role="dialog" id="editCategoryModal">
@@ -73,19 +45,59 @@
         </div>
 
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-4 mt-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Create Category</h3>
+                    </div>
 
+                    <div class="card-body">
+                        <form action="{{ route('category.store') }}" method="POST">
+                            @csrf
+                            @if($categories->isNotEmpty())
+                            <div>
+                                Category
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" id="parent_id" name="parent_id">
+                                    <option value="">Create New Parent Cateogry</option>
+                                    <optgroup label="Parent Cateogies">
+                                        @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </optgroup>
+                                </select>
+                            </div>
+                            @endif
+                            <div id="cateogryNameTitle">
+                                Parent Category Title
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}"
+                                    placeholder="Name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Create</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8 mt-4">
                 <div class="card">
                     <div class="card-header">
                         <h3>Categories</h3>
                     </div>
+                    @if($categories->isNotEmpty())
                     <div class="card-body">
                         <ul class="list-group">
                             @foreach ($categories as $category)
                             <li class="list-group-item">
-                                <div class="d-flex justify-content-between">
+                                <div
+                                    class="d-flex justify-content-between hasChildren {{$category->parent_id == '' ? '' : 'text-info font-weight-bold'}}">
                                     {{ $category->name }}
-
                                     <div class="button-group d-flex">
                                         <button type="button" class="btn btn-sm btn-primary mr-1 edit-category"
                                             data-toggle="modal" data-target="#editCategoryModal"
@@ -96,92 +108,76 @@
                                             @csrf
                                             @method('DELETE')
 
-                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
                                         </form>
                                     </div>
                                 </div>
 
-                                @if ($category->children)
-                                <ul class="list-group mt-2">
-                                    @foreach ($category->children as $child)
-                                    <li class="list-group-item">
-                                        <div class="d-flex justify-content-between">
-                                            {{ $child->name }}
+                                @if($category->children->isNotEmpty())
+                                <div class="hasChildren">
+                                    <a data-toggle="collapse" href="#collapse{{$category->id}}" role="button"
+                                        aria-expanded="false" aria-controls="collapse{{$category->id}}" class="">
+                                        Sub Categories
+                                    </a>
+                                </div>
+                                @else
+                                @endif
 
-                                            <div class="button-group d-flex">
-                                                <button type="button" class="btn btn-sm btn-primary mr-1 edit-category"
-                                                    data-toggle="modal" data-target="#editCategoryModal"
-                                                    data-id="{{ $child->id }}"
-                                                    data-name="{{ $child->name }}">Edit</button>
+                                @if ($category->children->isNotEmpty())
+                                <div class="collapse" id="collapse{{$category->id}}">
+                                    <ul class="list-group mt-2 list-unstyled">
+                                        <div class="list-group-item">
+                                            @foreach ($category->children as $child)
+                                            <li class="{{$category->children->count() > 1 ? 'mb-2' : ''}}">
+                                                <div class="d-flex justify-content-between">
+                                                    {{ $child->name }}
 
-                                                <form action="{{ route('category.destroy', $child->id) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
+                                                    <div class="button-group d-flex">
+                                                        <button type="button"
+                                                            class="btn btn-sm btn-primary mr-1 edit-category"
+                                                            data-toggle="modal" data-target="#editCategoryModal"
+                                                            data-id="{{ $child->id }}"
+                                                            data-name="{{ $child->name }}">Edit</button>
 
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                </form>
-                                            </div>
+                                                        <form action="{{ route('category.destroy', $child->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+
+                                                            <button type="submit"
+                                                                class="btn btn-sm btn-outline-danger">Delete</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            @if($category->children->count() > 1)
+                                            @if($loop->last)
+                                            @else
+                                            <hr>
+                                            @endif
+                                            @endif
+                                            @endforeach
                                         </div>
-                                    </li>
-                                    @endforeach
-                                </ul>
+                                    </ul>
+                                </div>
                                 @endif
                             </li>
                             @endforeach
                         </ul>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Create Category</h3>
-                    </div>
-
+                    @else
                     <div class="card-body">
-                        <form action="{{ route('category.store') }}" method="POST">
-                            @csrf
-
-                            <div class="form-group">
-                                <select class="form-control" name="parent_id">
-                                    <option value="">Select Parent Category</option>
-
-                                    @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" name="name" class="form-control" value="{{ old('name') }}"
-                                    placeholder="Category Name" required>
-                            </div>
-
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Create</button>
-                            </div>
-                        </form>
+                        <h5>There are currently no cateogies created. You can only assign articles to sub-categories. To
+                            create a sub cateogry you must first create a parent category. </h5>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
-    <script type="text/javascript">
-        $('.edit-category').on('click', function() {
-            var id = $(this).data('id');
-            var name = $(this).data('name');
-            var url = "{{ url('category') }}/" + id;
-
-            $('#editCategoryModal form').attr('action', url);
-            $('#editCategoryModal form input[name="name"]').val(name);
-          });
-    </script>
+    @include("layouts.partials.scripts.bootstrap")
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/category.js') }}"></script>
 </body>
 
 

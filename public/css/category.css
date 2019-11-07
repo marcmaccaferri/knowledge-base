@@ -1,0 +1,13 @@
+.hasChildren [aria-expanded="false"]:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f105"
+}
+
+.hasChildren [aria-expanded="true"]:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f107"
+}
+
+a {
+    text-decoration: none !important;
+}

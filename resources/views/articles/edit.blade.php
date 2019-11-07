@@ -5,6 +5,7 @@
     {{-- CALL IN THE MAIN HEAD --}}
     @include("layouts.partials.head.mainHead")
     @include("layouts.partials.head.summernote")
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/post.css') }}" rel="stylesheet">
 
 </head>
@@ -15,6 +16,7 @@
         @method('PATCH')
         <div class="form-group">
             @csrf
+            {{--
             <div class="sidebar-container">
                 <ul class="sidebar-navigation">
                     <div class="sidebar-logo text-center">ARTICLE SETTINGS</div>
@@ -24,26 +26,26 @@
 
                             @if(isset($article->category_id))
                             <option selected>{{$article->category_id}}</option>
-                            @endif
+            @endif
 
-                            <option value="">Select a Category</option>
+            <option value="">Select a Category</option>
 
-                            @foreach ($categories as $category)
-                            <option value="{{ $category->id }}"
-                                {{ $category->id == old('category_id') ? 'selected' : '' }}>
-                                {{ $category->name }}</option>
+            @foreach ($categories as $category)
+            <option value="{{ $category->id }}" {{ $category->id == old('category_id') ? 'selected' : '' }}>
+                {{ $category->name }}</option>
 
-                            @if ($category->children)
-                            @foreach ($category->children as $child)
-                            <option value="{{ $child->id }}" {{ $child->id == old('category_id') ? 'selected' : '' }}>
-                                &nbsp;&nbsp;{{ $child->name }}</option>
-                            @endforeach
-                            @endif
-                            @endforeach
-                        </select>
-                    </div>
-                </ul>
-            </div>
+            @if ($category->children)
+            @foreach ($category->children as $child)
+            <option value="{{ $child->id }}" {{ $child->id == old('category_id') ? 'selected' : '' }}>
+                &nbsp;&nbsp;{{ $child->name }}</option>
+            @endforeach
+            @endif
+            @endforeach
+            </select>
+        </div>
+        </ul>
+        </div>
+        --}}
         </div>
 
         <div class="container justify-content-center text-center">

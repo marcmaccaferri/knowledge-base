@@ -4,6 +4,7 @@
 <head>
     {{-- CALL IN THE MAIN HEAD --}}
     @include("layouts.partials.head.mainHead")
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 
 <body>

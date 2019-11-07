@@ -5,40 +5,41 @@
     {{-- CALL IN THE MAIN HEAD --}}
     @include("layouts.partials.head.mainHead")
     @include("layouts.partials.head.summernote")
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/post.css') }}" rel="stylesheet">
-
 </head>
 
 <body>
     <form method="post" action="{{ route('articles.store') }}">
         @csrf
+        {{--
         <div class="form-group">
             @csrf
             <div class="sidebar-container">
                 <ul class="sidebar-navigation">
                     <div class="sidebar-logo text-center"><i class="fas fa-user"></i> {{Auth::user()->name}}</div>
-                    <div class="container mt-5">
-                        <label for="category_id" class="post_category">Category</label>
-                        <select class="form-control post_category" name="category_id" required>
-                            <option value="">Select a Category</option>
+        <div class="container mt-5">
+            <label for="category_id" class="post_category">Category</label>
+            <select class="form-control post_category" name="category_id" required>
+                <option value="">Select a Category</option>
+                @foreach ($categories as $category)
+                <optgroup label="{{ $category->name }}">
+                    @if ($category->children)
+                    @foreach ($category->children as $child)
+                    <option value="{{ $child->id }}" {{ $child->id == old('category_id') ? 'selected' : '' }}>
+                        &nbsp;&nbsp;{{ $child->name }}</option>
+                    @endforeach
+                    @else
 
-                            @foreach ($categories as $category)
-                            <option value="{{ $category->id }}"
-                                {{ $category->id == old('category_id') ? 'selected' : '' }}>
-                                {{ $category->name }}</option>
-
-                            @if ($category->children)
-                            @foreach ($category->children as $child)
-                            <option value="{{ $child->id }}" {{ $child->id == old('category_id') ? 'selected' : '' }}>
-                                &nbsp;&nbsp;{{ $child->name }}</option>
-                            @endforeach
-                            @endif
-                            @endforeach
-                        </select>
-                    </div>
-                </ul>
-            </div>
+                    @endif
+                </optgroup>
+                @endforeach
+            </select>
         </div>
+        </ul>
+        </div>
+        </div>
+        --}}
 
         <div class="container justify-content-center text-center">
             <div>
@@ -74,17 +75,15 @@
                     <h4 class="mb-3">Category</h4>
                     <select class="form-control" name="category_id" required>
                         <option value="">Select a Category</option>
-
                         @foreach ($categories as $category)
-                        <option value="{{ $category->id }}" {{ $category->id == old('category_id') ? 'selected' : '' }}>
-                            {{ $category->name }}</option>
-
-                        @if ($category->children)
-                        @foreach ($category->children as $child)
-                        <option value="{{ $child->id }}" {{ $child->id == old('category_id') ? 'selected' : '' }}>
-                            &nbsp;&nbsp;{{ $child->name }}</option>
-                        @endforeach
-                        @endif
+                        <optgroup label="{{ $category->name }}">
+                            @if ($category->children)
+                            @foreach ($category->children as $child)
+                            <option value="{{ $child->id }}" {{ $child->id == old('category_id') ? 'selected' : '' }}>
+                                &nbsp;&nbsp;{{ $child->name }}</option>
+                            @endforeach
+                            @endif
+                        </optgroup>
                         @endforeach
                     </select>
                 </div>

@@ -47,7 +47,7 @@ class CategoryController extends Controller
 
         Category::create($data);
 
-        return redirect('/articles/create')->withSuccess('You have successfully created a Category!');
+        return redirect('/category')->withSuccess('You have successfully created a Category!');
     }
 
     /**
@@ -89,7 +89,7 @@ class CategoryController extends Controller
 
         Category::find($id)->update($data);
 
-        return redirect('/articles/create')->withSuccess('You have successfully updated a Category!');
+        return redirect('/category')->withSuccess('You have successfully updated a Category!');
     }
 
     /**
@@ -124,6 +124,6 @@ class CategoryController extends Controller
 
         $category->delete();
 
-        return redirect('/articles/create')->withSuccess('You have successfully deleted a Category!');
+        return redirect('/category')->withSuccess('You have successfully deleted a Category!');
     }
 }

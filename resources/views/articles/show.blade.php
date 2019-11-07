@@ -4,6 +4,7 @@
 <head>
     {{-- CALL IN THE MAIN HEAD --}}
     @include("layouts.partials.head.mainHead")
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -22,6 +23,15 @@
             </div>
         </div>
     </div>
+    <div class="ml-5">
+        <small>
+            <div class="ml-4">Article by <span style="font-weight:900">{{ ucfirst($user->name) }}</span>.</div>
+            <div class="ml-4">
+                Created on <span>{{date('m/d/Y', strtotime($article->created_at))}}</span>.
+                Updated on <span>{{date('m/d/Y', strtotime($article->updated_at))}}</span>.
+            </div>
+        </small>
+    </div>
     <hr>
     <div class="container mt-4 mb-5">
         <div class="mt-5 mb-5">
@@ -29,18 +39,6 @@
         </div>
     </div>
     <hr>
-    <div id="articleTitleBar" class="mt-5 mb-3">
-        <div class="container mt-4">
-            <div class="row">
-                <div class="col-6 text-right">
-                    <p><i class="fas fa-users"></i> {{ ucfirst($user->name) }}</p>
-                </div>
-                <div class="col-6">
-                    <p><i class="fas fa-calendar"></i> {{date('m-d-Y', strtotime($article->updated_at))}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
     @if($user->role == 1)
     <div class="container text-center">
         <a href="{{$article->id}}/edit"><i class="fas fa-pencil-alt"></i> Edit This Article</a>
