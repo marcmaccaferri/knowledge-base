@@ -5,55 +5,47 @@
     {{-- CALL IN THE MAIN HEAD --}}
     @include("layouts.partials.head.mainHead")
     @include("layouts.partials.head.summernote")
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/post.css') }}" rel="stylesheet">
 
 </head>
 
 <body>
     <form method="post" action="{{ route('articles.update', $article->id) }}">
+        @csrf
+        @method('PATCH')
         <div class="form-group">
             @csrf
-            @method('PATCH')
+            {{--
             <div class="sidebar-container">
                 <ul class="sidebar-navigation">
                     <div class="sidebar-logo text-center">ARTICLE SETTINGS</div>
                     <div class="container mt-5">
-                        <select class="form-control form-control-sm post_category" id="Post_Category"
-                            name="Article_Category">
-                            @if(isset($article->Article_Category))
-                            <option selected>{{$article->Article_Category}}</option>
-                            @else
-                            <option selected disabled>Select Main Category...</option>
-                            @endif
-                            @if($article->Article_Category != 'Service')
-                            <option value="Service">Service</option>
-                            @endif
-                            @if($article->Article_Category != 'Retail')
-                            <option value="Retail">Retail</option>
-                            @endif
-                        </select>
-                    </div>
-                    <div class="container mt-5">
-                        <select class="form-control form-control-sm post_category" id="Article_Sub_Category"
-                            name="Article_Sub_Category">
-                            @if(isset($article->Article_Sub_Category))
-                            <option selected>{{$article->Article_Sub_Category}}</option>
-                            @else
-                            <option selected disabled>Select Main Category...</option>
-                            @endif
-                            @if($article->Article_Sub_Category != 'Invenotry Management')
-                            <option value="Invenotry Management">Invenotry Management</option>
-                            @endif
-                            @if($article->Article_Sub_Category != 'Repair Guide')
-                            <option value="Repair Guide">Repair Guide</option>
-                            @endif
-                            @if($article->Article_Sub_Category != 'Point Of Sale')
-                            <option value="Point Of Sale">Point Of Sale</option>
-                            @endif
-                        </select>
-                    </div>
-                </ul>
-            </div>
+                        <label for="category_id" class="post_category">Category</label>
+                        <select class="form-control post_category" name="category_id" required>
+
+                            @if(isset($article->category_id))
+                            <option selected>{{$article->category_id}}</option>
+            @endif
+
+            <option value="">Select a Category</option>
+
+            @foreach ($categories as $category)
+            <option value="{{ $category->id }}" {{ $category->id == old('category_id') ? 'selected' : '' }}>
+                {{ $category->name }}</option>
+
+            @if ($category->children)
+            @foreach ($category->children as $child)
+            <option value="{{ $child->id }}" {{ $child->id == old('category_id') ? 'selected' : '' }}>
+                &nbsp;&nbsp;{{ $child->name }}</option>
+            @endforeach
+            @endif
+            @endforeach
+            </select>
+        </div>
+        </ul>
+        </div>
+        --}}
         </div>
 
         <div class="container justify-content-center text-center">

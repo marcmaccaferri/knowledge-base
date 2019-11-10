@@ -68,3 +68,10 @@ CATEGORY STYLES
     top: 30px;
     width: 65%;
 }
+
+#articleTitleBar {
+    background: rgb(62, 255, 203);
+    background: linear-gradient(47deg, rgba(62, 255, 203, 1) 0%, rgba(162, 45, 253, 1) 100%);
+    color: white;
+    padding-top: 1px;
+}
