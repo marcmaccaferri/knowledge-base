@@ -1,3 +1,33 @@
+This is a knowledge base project. It allows you to create articles that can be categorized. 
+
+To run this project: 
+1.  Run npm install to install all dependencies 
+2.  Download and install MAMP from https://www.mamp.info/en/downloads/
+3.  Open MAMP
+4.  Go to MAMP prefrences 
+5.  Select Ports
+6.  Change MySQL port to 8889
+7.  On Mac download and install Sequal Pro -> https://www.sequelpro.com
+    On PC download and install HeidiSQL -> https://www.heidisql.com/download.php
+8.  Create a new database titled "devices"
+9.  Make a copy of .env.example and rename it to .env
+10. Change the following information in .env:
+        DB_CONNECTION=mysql
+        DB_PORT=8889
+        DB_USER=root
+        DB_PASSWORD=root
+        DB_DATABASE=devices
+11. Run php artisan migrate to setup the database
+12. Run php artisan serve
+13. Create a user (you will have to manually adjust the user role using Sequel Pro to 1 for an admin account)
+14. Once you are logged in as an admin, click the button that says "Manage Categories", you will need to create a parent category, and then a sub category (you can only assign articles to sub categories)
+15. Once a sub category is created you are now able to create your first article. 
+
+
+
+
+
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
