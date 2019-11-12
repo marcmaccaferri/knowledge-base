@@ -14,11 +14,13 @@ To run this project you must have <a href="https://laravel.com/docs/5.8/installa
 11.  Create a new database titled "Knowledge Base"
 12.  Make a copy of .env.example and rename it to .env
 13. Change the following information in .env:
-        DB_CONNECTION=mysql
-        DB_PORT=8889
-        DB_USER=root
-        DB_PASSWORD=root
-        DB_DATABASE=devices
+<ul>
+        <li>DB_CONNECTION=mysql</li>
+        <li>DB_PORT=8889</li>
+        <li>DB_USER=root</li>
+        <li>DB_PASSWORD=root</li>
+        <li>DB_DATABASE=devices</li>
+    </ul>
 14. Run php artisan migrate to setup the database
 15. Run php artisan serve
 16. Create a user (you will have to manually adjust the user role using Sequel Pro to 1 for an admin account)
