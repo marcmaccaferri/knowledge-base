@@ -1,6 +1,6 @@
 This is a knowledge base project. It allows you to create articles that can be categorized. 
 
-To run this project: 
+To run this project you must have <a href="https://laravel.com/docs/5.8/installation" target="_blank">laravel installed</a>: 
 1.  Run npm install to install all dependencies 
 2.  Download and install MAMP from https://www.mamp.info/en/downloads/
 3.  Open MAMP
