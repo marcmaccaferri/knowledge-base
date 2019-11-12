@@ -26,7 +26,15 @@
                     </div>
                 </div>
             </div>
+            @if(Auth::user()->role === 1)
+            <div class="mb-0 mt-5">
+                <a href="articles/create" class="btn btn-light mr-3"><i class="fas fa-plus pr-3"></i>Create A New
+                    Article</a>
 
+                <a href="/category" class="btn btn-light"><i class="fas fa-folder-plus pr-3"></i></i>Manage
+                    Categories</a>
+            </div>
+            @endif
         </div>
     </div>
 
@@ -55,10 +63,9 @@
             @endforeach
         </div>
     </div>
+    @include("layouts.partials.scripts.bootstrap")
+    <script src="{{ asset('js/index.js') }}" defer></script>
 
 </body>
-
-@include("layouts.partials.scripts.bootstrap")
-<script src="{{ asset('js/index.js') }}" defer></script>
 
 </html>

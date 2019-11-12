@@ -40,7 +40,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'  => 'required|min:3|max:255|string'
+            'name'  => 'required|unique:categories|min:3|max:255|string'
         ]);
 
         $data = $request->except('_token');

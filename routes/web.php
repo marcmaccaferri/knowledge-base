@@ -13,8 +13,10 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function () {
+    return redirect('login');
+});
 
-Route::resource('articles', 'ArticleController');
+Route::resource('articles', 'ArticleController')->middleware('auth');
 
-Route::resource('category', 'CategoryController');
+Route::resource('category', 'CategoryController')->middleware('auth');

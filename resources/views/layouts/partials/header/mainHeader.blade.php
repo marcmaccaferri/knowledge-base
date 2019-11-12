@@ -8,7 +8,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-
+                @if(Auth::guest())
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="loginDropdownMenuLink" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -83,7 +83,34 @@
                         </div>
                     </div>
                 </li>
+                @else
+                <div class="btn-group">
+                    <button class="btn btn-secondary btn-sm" type="button">
+                        <i class="fas fa-user"></i> {{Auth::user()->name}}
+                    </button>
+                    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="/articles">Articles</a>
+                        @if(Auth::user()->role === 1)
+                        <a class="dropdown-item" href="/category">Categories</a>
+                        @endif
+                        <hr>
+                        <div>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
 
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                @endif
             </ul>
         </div>
     </nav>
