@@ -39,13 +39,15 @@
         </div>
     </div>
     <hr>
-    @if($user->role == 1)
+    @if(Auth::user()->role === 1)
     <div class="container text-center">
         <a href="{{$article->id}}/edit"><i class="fas fa-pencil-alt"></i> Edit This Article</a>
     </div>
     @endif
 
 
+    @include("layouts.partials.scripts.bootstrap")
+    <script src="{{ asset('js/index.js') }}" defer></script>
 
 </body>
 

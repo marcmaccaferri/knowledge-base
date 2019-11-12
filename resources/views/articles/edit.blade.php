@@ -71,12 +71,28 @@
 
         <div class="container">
             <div class="row mt-5">
-                <div class="col-lg-12">
+                <div class="col-lg-9">
                     <div class="form-group">
                         <h4 class="mb-3">Article Title</h4>
                         <input type="text" class="form-control" name="Article_Title" id="Article_Title"
                             placeholder="Enter Article Title" value="{{ $article->Article_Title }}">
                     </div>
+                </div>
+                <div class="col-lg-3">
+                    <h4 class="mb-3">Category</h4>
+                    <select class="form-control" name="category_id" required>
+                        <option value="">Select a Category</option>
+                        @foreach ($categories as $category)
+                        <optgroup label="{{ $category->name }}">
+                            @if ($category->children)
+                            @foreach ($category->children as $child)
+                            <option value="{{ $child->id }}" {{ $child->id == old('category_id') ? 'selected' : '' }}>
+                                &nbsp;&nbsp;{{ $child->name }}</option>
+                            @endforeach
+                            @endif
+                        </optgroup>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <hr>
@@ -84,15 +100,14 @@
                 <h4>Article Text</h4>
                 <textarea name="Article_Body" id="summernote">{{ $article->Article_Body }}</textarea>
             </div>
-            <button type="submit" class="btn btn-primary float-right mt-3 ">Submit</button>
+            <button type="submit" class="btn btn-primary float-right mt-5 ">Submit</button>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger mt-5" data-toggle="modal" data-target="#exampleModalCenter">
+                Delete
+            </button>
         </div>
         <input type="hidden" value="{{Auth::user()->id}}" name="User_Id">
     </form>
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
-        Delete
-    </button>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
