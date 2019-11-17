@@ -28,11 +28,13 @@
             </div>
             @if(Auth::user()->role === 1)
             <div class="mb-0 mt-5">
-                <a href="articles/create" class="btn btn-light mr-3"><i class="fas fa-plus pr-3"></i>Create A New
+                <a href="create" class="btn btn-light mr-3 mt-2"><i class="fas fa-plus pr-3"></i>Create A New
                     Article</a>
 
-                <a href="/category" class="btn btn-light"><i class="fas fa-folder-plus pr-3"></i></i>Manage
+                <a href="/category" class="btn btn-light mr-3 mt-2"><i class="fas fa-folder-plus pr-3"></i></i>Manage
                     Categories</a>
+                <a href="/users" class="btn btn-light mt-2"><i class="fas fa-users pr-3"></i></i>Manage
+                    Users</a>
             </div>
             @endif
         </div>
