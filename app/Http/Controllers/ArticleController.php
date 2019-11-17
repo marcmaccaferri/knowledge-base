@@ -99,7 +99,7 @@ class ArticleController extends Controller
         ]);
         Article::whereId($id)->update($validatedData);
 
-        return redirect('/articles'($id));
+        return redirect('/articles')->with('success', 'Article Successfully Updated');
     }
 
     /**
