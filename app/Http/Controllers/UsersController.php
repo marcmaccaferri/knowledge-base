@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Redirect;
 
 class UsersController extends Controller
 {
@@ -71,7 +72,10 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::where('id', $id)->firstOrFail();
+        $user->role = $request->input('role');
+        $user->save();
+        return Redirect::back()->with('success', 'User Updated Successfully!');
     }
 
     /**
