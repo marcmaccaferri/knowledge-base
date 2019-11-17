@@ -96,6 +96,7 @@
                         <a class="dropdown-item" href="/articles">Articles</a>
                         @if(Auth::user()->role === 1)
                         <a class="dropdown-item" href="/category">Categories</a>
+                        <a class="dropdown-item" href="/users">Users</a>
                         @endif
                         <hr>
                         <div>

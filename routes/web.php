@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::resource('articles', 'ArticleController')->middleware('auth');
 
 Route::resource('category', 'CategoryController')->middleware('auth');
+
+Route::resource('users', 'UsersController')->middleware('auth');
