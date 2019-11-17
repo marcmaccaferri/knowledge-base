@@ -69,7 +69,14 @@
                         <td><button type="button" class="btn btn-sm btn-outline-primary edit-category float-right"
                                 data-toggle="modal" data-target="#editUserModal" data-id="{{ $user->id }}"
                                 data-name="{{ $user->name }}">EDIT</button></td>
-                        <td><button class="btn btn-sm btn-outline-danger">DELETE</button></td>
+                        <td>
+                            <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+
+                                <button type="submit" class="btn btn-sm btn-outline-danger">DELETE</button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
