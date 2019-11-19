@@ -44,36 +44,27 @@
             <table class="table table-striped table-hover">
 
                 <thead>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th></th>
-                    <th></th>
+                    <tr class="d-flex">
+                        <th class="col-1"></th>
+                        <th class="col-1">ID</th>
+                        <th class="col-4">Name</th>
+                        <th class="col-4">Email</th>
+                        <th class="col-2">Role</th>
+                    </tr>
                 </thead>
                 <tbody>
                     @foreach($users as $user)
-                    <tr>
-                        <td>{{$user->id}}</td>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->email}}</td>
+                    <tr class="d-flex">
+                        <td class="col-1"><a href="users/{{$user->id}}/edit"
+                                class="btn btn-sm btn-primary edit-category float-right">EDIT</a></td>
+                        <td class="col-1">{{$user->id}}</td>
+                        <td class="col-4">{{$user->name}}</td>
+                        <td class="col-4">{{$user->email}}</td>
                         @if($user->role === 1)
-                        <td>Admin</td>
+                        <td class="col-2">Admin</td>
                         @else
-                        <td>User</td>
+                        <td class="col-2">User</td>
                         @endif
-                        <td><a href="users/{{$user->id}}/edit"
-                                class="btn btn-sm btn-primary edit-category float-right">EDIT</a>
-                        </td>
-                        <td>
-                            @if($user->id != Auth::user()->id )
-                            <button type="button" class="btn btn-sm btn-outline-danger float-left" data-toggle="modal"
-                                data-target="#deleteUserModal" data-id="{{ $user->id }}"
-                                data-name="{{ $user->name }}">DELETE</button>
-                            @else
-                            <small>Current User</small>
-                            @endif
-                        </td>
                     </tr>
                     @endforeach
                 </tbody>
