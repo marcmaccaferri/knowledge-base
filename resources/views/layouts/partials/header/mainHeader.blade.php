@@ -85,10 +85,10 @@
                 </li>
                 @else
                 <div class="btn-group">
-                    <button class="btn btn-secondary btn-sm" type="button">
+                    <button class="btn bg-transparent btn-sm" type="button">
                         <i class="fas fa-user"></i> {{Auth::user()->name}}
                     </button>
-                    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split"
+                    <button type="button" class="btn btn-sm bg-transparent dropdown-toggle dropdown-toggle-split"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
