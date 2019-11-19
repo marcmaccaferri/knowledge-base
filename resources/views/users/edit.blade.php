@@ -9,8 +9,35 @@
 
 <body>
 
+    <div class="modal" tabindex="-1" role="dialog" id="deleteUserModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete User?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <p class="text-center mt-3 ">Are you sure that you want to delete {{$user->name}}? This action can not
+                    be
+                    undone.</p>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">CANCEL</button>
+                    <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">DELETE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @include("layouts.partials.header.mainHeader")<div>
         <div class="container">
+            <a href="/users"><button type="button" class="btn btn-sm btn-outline-secondary mt-3 mb-3"><i
+                        class="fa fa-arrow-left" aria-hidden="true"></i> Go
+                    Back</button></a>
             <div class="card">
                 <div class="card-header">
                     Edit User
@@ -56,9 +83,13 @@
                                 @endif
                             </select>
                         </div>
-                        <a href="{{ url()->previous() }}"><button type="button"
-                                class="btn btn-outline-danger float-left mt-5 mb-4">Cancel</button></a>
-                        <button type="submit" class="btn btn-primary float-right mt-5 mb-4">Submit Changes</button>
+                        <div class="row mt-4">
+                            <button type="button" class="mx-auto btn btn-outline-danger" data-toggle="modal"
+                                data-target="#deleteUserModal" data-id="{{ $user->id }}"
+                                data-name="{{ $user->name }}">DELETE</button>
+                            <button type="submit" class=" mx-auto btn btn-primary ">Submit
+                                Changes</button>
+                        </div>
                     </div>
                 </form>
             </div>

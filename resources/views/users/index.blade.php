@@ -10,6 +10,30 @@
 <body>
 
     @include("layouts.partials.header.mainHeader")
+    {{--
+    <div class="modal" tabindex="-1" role="dialog" id="deleteUserModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete User?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <p class="text-center">Are you sure that you want to delete {{$user->name}}? This action can not be
+    undone.</p>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">CANCEL</button>
+        <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">DELETE</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    --}}
 
     <div class="container mt-4">
         @include("layouts.partials.main.success")
@@ -21,7 +45,7 @@
 
                 <thead>
                     <th>ID</th>
-                    <th>Username</th>
+                    <th>Name</th>
                     <th>Email</th>
                     <th>Role</th>
                     <th></th>
