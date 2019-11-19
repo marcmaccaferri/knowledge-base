@@ -11,10 +11,11 @@
 
     @include("layouts.partials.header.mainHeader")
 
-    <div class="container mt-4">
+    <div class="container mt-3">
         @include("layouts.partials.main.success")
-        <div class="row mt-5 mb-4">
-            <a href="/register" class="btn btn-dark mt-2"><i class="fas fa-plus pr-3"></i></i>Register New User</a>
+        <div class="row mt-2 mb-5">
+            <a href="/register" class="btn btn-dark mt-2"><i class="fas fa-plus pr-3"></i></i>Register New
+                User</a>
         </div>
         <div class="row mt-3">
             <div class="table-responsive">
