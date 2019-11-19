@@ -17,6 +17,7 @@ class UsersController extends Controller
     {
         $users = User::all();
 
+
         return view('users/index', compact('users'));
     }
 
@@ -60,7 +61,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('/users/edit', compact('user'));
     }
 
     /**
@@ -72,10 +75,14 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::where('id', $id)->firstOrFail();
-        $user->role = $request->input('role');
-        $user->save();
-        return Redirect::back()->with('success', 'User Updated Successfully!');
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|max:255',
+            'role' => 'required|max:255',
+        ]);
+        User::whereId($id)->update($validatedData);
+
+        return redirect('/users')->with('success', 'Article Successfully Updated');
     }
 
     /**
@@ -86,8 +93,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $user->delete();
-        return Redirect::back()->with('success', 'User Removed Successfully!');
+        return Redirect::back()->withSuccess('User Removed Successfully!');
     }
 }

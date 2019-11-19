@@ -17,6 +17,10 @@ Route::get('/', function () {
     return redirect('login');
 });
 
+Route::get('/home', function () {
+    return redirect('articles');
+});
+
 Route::resource('articles', 'ArticleController')->middleware('auth');
 
 Route::resource('category', 'CategoryController')->middleware('auth');

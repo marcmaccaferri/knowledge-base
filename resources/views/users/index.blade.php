@@ -13,38 +13,10 @@
 
     <div class="container mt-4">
         @include("layouts.partials.main.success")
-        @foreach($users as $user)
-        <div class="modal" tabindex="-1" role="dialog" id="editUserModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Edit User</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form method="post" action="{{ route('users.update', $user->id)  }}">
-                        @csrf
-                        @method('PUT')
-                        <div class=" modal-body">
-                            <div class="form-group">
-                                <select id="role" name="role" class="form-control">
-                                    <option value="0">User</option>
-                                    <option value="1">Admin</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Update</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        @endforeach
-
         <div class="row mt-5">
+            <a href="/register" class="btn btn-dark mt-2"><i class="fas fa-plus pr-3"></i></i>Register New User</a>
+        </div>
+        <div class="row mt-3">
             <table class="table table-striped table-hover">
 
                 <thead>
@@ -66,16 +38,17 @@
                         @else
                         <td>User</td>
                         @endif
-                        <td><button type="button" class="btn btn-sm btn-outline-primary edit-category float-right"
-                                data-toggle="modal" data-target="#editUserModal" data-id="{{ $user->id }}"
-                                data-name="{{ $user->name }}">EDIT</button></td>
+                        <td><a href="users/{{$user->id}}/edit"
+                                class="btn btn-sm btn-primary edit-category float-right">EDIT</a>
+                        </td>
                         <td>
-                            <form action="{{ route('users.destroy', $user->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-
-                                <button type="submit" class="btn btn-sm btn-outline-danger">DELETE</button>
-                            </form>
+                            @if($user->id != Auth::user()->id )
+                            <button type="button" class="btn btn-sm btn-outline-danger float-left" data-toggle="modal"
+                                data-target="#deleteUserModal" data-id="{{ $user->id }}"
+                                data-name="{{ $user->name }}">DELETE</button>
+                            @else
+                            <small>Current User</small>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

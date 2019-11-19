@@ -30,7 +30,6 @@
             <div class="mb-0 mt-5">
                 <a href="create" class="btn btn-light mr-3 mt-2"><i class="fas fa-plus pr-3"></i>Create A New
                     Article</a>
-
                 <a href="/category" class="btn btn-light mr-3 mt-2"><i class="fas fa-folder-plus pr-3"></i></i>Manage
                     Categories</a>
                 <a href="/users" class="btn btn-light mt-2"><i class="fas fa-users pr-3"></i></i>Manage
@@ -41,7 +40,9 @@
     </div>
 
     <div class="container mt-4">
-        @include("layouts.partials.main.success")
+        <div class="mx-auto">
+            @include("layouts.partials.main.success")
+        </div>
         <div class="row mt-5">
 
             @foreach($categories as $category)
