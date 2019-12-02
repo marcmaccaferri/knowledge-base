@@ -10,40 +10,22 @@
 <body>
 
     @include("layouts.partials.header.mainHeader")
-
-    <div class="mt-5">
-        <div class="row">
-            <div class="col-1 text-right">
-                <a href="/articles">
-                    <h2><i class="fas fa-arrow-left"></i></h2>
-                </a>
-            </div>
-            <div class="col-11">
-                <h2 class="font-weight-bold">{{ ucfirst($article->Article_Title) }}</h2>
-            </div>
+    <div class="container pt-5 pb-5 mt-5" style="background-color:white;">
+        <div class="mt-5">
+            <h2 class="font-weight-bold ml-3 mb-3"> {{ ucfirst($article->Article_Title) }}</h2>
         </div>
-    </div>
-    <div class="ml-5">
-        <small>
-            <div class="ml-4">Article by <span style="font-weight:900">{{ ucfirst($user->name) }}</span>.</div>
-            <div class="ml-4">
-                Created on <span>{{date('m/d/Y', strtotime($article->created_at))}}</span>.
-                Updated on <span>{{date('m/d/Y', strtotime($article->updated_at))}}</span>.
-            </div>
-        </small>
-    </div>
-    <hr>
-    <div class="container mt-4 mb-5">
-        <div class="mt-5 mb-5">
+        <div class="ml-3">
+            <small>
+                {{date('m/d/Y', strtotime($article->updated_at))}} <span class="pl-2 pr-2">|</span>
+                {{ ucfirst($user->name) }} @if(Auth::user()->role === 1) <span class="pl-2 pr-2">|</span> <a
+                    href="{{$article->id}}/edit">Edit</a>@endif
+            </small>
+        </div>
+        <hr>
+        <div class="mt-4 mb-4 ml-3">
             {!! $article->Article_Body !!}
         </div>
     </div>
-    <hr>
-    @if(Auth::user()->role === 1)
-    <div class="container text-center">
-        <a href="{{$article->id}}/edit"><i class="fas fa-pencil-alt"></i> Edit This Article</a>
-    </div>
-    @endif
 
 
     @include("layouts.partials.scripts.bootstrap")

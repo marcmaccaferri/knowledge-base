@@ -21,6 +21,8 @@ Route::get('/home', function () {
     return redirect('articles');
 });
 
+Route::get('/search', 'SearchController@search');
+
 Route::resource('articles', 'ArticleController')->middleware('auth');
 
 Route::resource('category', 'CategoryController')->middleware('auth');

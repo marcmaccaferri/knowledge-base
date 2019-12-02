@@ -19,16 +19,20 @@
             </div>
 
             <div>
-                <div class="input-group mb-3 mt-3">
-                    <input type="text" class="form-control" placeholder="What do you need help with?">
-                    <div class="input-group-append">
-                        <button class="btn btn-info" type="button"><i class="fas fa-search text-white"></i></button>
+                @csrf
+                <form action="/search" method="get" role="search">
+                    <div class="input-group mb-3 mt-3">
+                        <input type="text" name="search" class="form-control" placeholder="What do you need help with?">
+                        <div class="input-group-append">
+                            <button class="btn btn-info" type="button"><i class="fas fa-search text-white"></i></button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
+
             @if(Auth::user()->role === 1)
             <div class="mb-0 mt-5">
-                <a href="create" class="btn btn-light mr-3 mt-2"><i class="fas fa-plus pr-3"></i>Create A New
+                <a href="/articles/create" class="btn btn-light mr-3 mt-2"><i class="fas fa-plus pr-3"></i>Create A New
                     Article</a>
                 <a href="/category" class="btn btn-light mr-3 mt-2"><i class="fas fa-folder-plus pr-3"></i></i>Manage
                     Categories</a>
