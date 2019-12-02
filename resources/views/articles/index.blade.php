@@ -24,7 +24,7 @@
                     <div class="input-group mb-3 mt-3">
                         <input type="text" name="search" class="form-control" placeholder="What do you need help with?">
                         <div class="input-group-append">
-                            <button class="btn btn-info" type="button"><i class="fas fa-search text-white"></i></button>
+                            <button class="btn btn-info" type="submit"><i class="fas fa-search text-white"></i></button>
                         </div>
                     </div>
                 </form>
