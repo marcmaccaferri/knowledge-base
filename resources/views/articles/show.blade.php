@@ -16,9 +16,11 @@
         </div>
         <div class="ml-3">
             <small>
-                {{date('m/d/Y', strtotime($article->updated_at))}} <span class="pl-2 pr-2">|</span>
-                {{ ucfirst($user->name) }} @if(Auth::user()->role === 1) <span class="pl-2 pr-2">|</span> <a
-                    href="{{$article->id}}/edit">Edit</a>@endif
+                <i class="fas fa-calendar"></i> {{date('m/d/Y', strtotime($article->updated_at))}} <span
+                    class="pl-2 pr-2">|</span>
+                <i class="fas fa-user-edit"></i> {{ ucfirst($user->name) }} @if(Auth::user()->role === 1) <span
+                    class="pl-2 pr-2">|</span> <a href="{{$article->id}}/edit"><i class="fas fa-pencil-alt"></i>
+                    Edit</a>@endif
             </small>
         </div>
         <hr>
