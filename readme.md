@@ -1,31 +1,34 @@
 This is a knowledge base project. It allows you to create articles that can be categorized. 
 
 To run this project you must have <a href="https://laravel.com/docs/5.8/installation" target="_blank">laravel installed</a>: 
-1.  Run npm install to install all dependencies 
-2.  Download and install MAMP from https://www.mamp.info/en/downloads/
-4.  Clone project
-5.  Run php artisan key:generate
-6.  Open MAMP
-7.  Go to MAMP prefrences 
-8.  Select Ports
-9.  Change MySQL port to 8889
-10.  On Mac download and install Sequal Pro -> https://www.sequelpro.com
+
+You must also have MAMP <a href="https://www.mamp.info/en/downloads/" target="_blank">installed</a>
+
+1.  Clone the project
+2.  Run npm install to install all dependencies 
+3.  Run composer install
+4.  Run php artisan key:generate
+5.  Open MAMP
+6.  Go to MAMP prefrences 
+7.  Select Ports
+8.  Change MySQL port to 8889
+9.  On Mac download and install Sequal Pro -> https://www.sequelpro.com
     On PC download and install HeidiSQL -> https://www.heidisql.com/download.php
-11.  Create a new database titled "Knowledge Base"
-12.  Make a copy of .env.example and rename it to .env
-13. Change the following information in .env:
+10. Create a new database titled "Knowledge Base"
+11. Make a copy of .env.example and rename it to .env
+12. Change the following information in .env:
 <ul>
         <li>DB_CONNECTION=mysql</li>
         <li>DB_PORT=8889</li>
         <li>DB_USER=root</li>
         <li>DB_PASSWORD=root</li>
         <li>DB_DATABASE=devices</li>
-    </ul>
-14. Run php artisan migrate to setup the database
-15. Run php artisan serve
-16. Create a user (you will have to manually adjust the user role using Sequel Pro to 1 for an admin account)
-17. Once you are logged in as an admin, click the button that says "Manage Categories", you will need to create a parent category, and then a sub category (you can only assign articles to sub categories)
-18. Once a sub category is created you are now able to create your first article. 
+</ul>
+13. Run php artisan migrate to setup the database
+14. Run php artisan serve
+15. Create a user (you will have to manually change the user role to 1 for an admin account)
+16. Once you are logged in as an admin, click the button that says "Manage Categories", you will need to create a parent category, and then a sub category (you can only assign articles to sub categories)
+17. Once a sub category is created you are now able to create your first article. 
 
 
 
