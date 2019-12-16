@@ -14,18 +14,18 @@ You must also have MAMP <a href="https://www.mamp.info/en/downloads/" target="_b
 9.  On Mac download and install Sequal Pro -> https://www.sequelpro.com
     On PC download and install HeidiSQL -> https://www.heidisql.com/download.php
 10. Connect by using: 
-    Host: 127.0.0.1
-    Username: root
-    Password: root
-    Port: 8889
+    <br>Host: 127.0.0.1
+    <br>Username: root
+    <br>Password: root
+    <br>Port: 8889
 11. Create a new database titled "knowledge_base"
 12. Make a copy of <a href="https://github.com/laravel/laravel/blob/master/.env.example" target="_blank">.env.example</a> and rename it to .env in the root of the directory. 
 13. Change the following information in .env:
-    DB_CONNECTION=mysql
-    DB_PORT=8889
-    DB_USER=root
-    DB_PASSWORD=root
-    DB_DATABASE=knowledge_base
+    <br>DB_CONNECTION=mysql
+    <br>DB_PORT=8889
+    <br>DB_USER=root
+    <br>DB_PASSWORD=root
+    <br>DB_DATABASE=knowledge_base
 14. Run php artisan key:generate
 15. Run php artisan migrate to setup the database
 16. Run php artisan serve
