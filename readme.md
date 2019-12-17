@@ -19,32 +19,28 @@ On Mac download and install <a href="https://www.sequelpro.com" target="_blank">
 On PC download and install <a href="https://www.heidisql.com/download.php" target="_blank">HeidiSQL</a>
 
 Connect by using: 
-    ```
-    Host: 127.0.0.1
+    ```Host: 127.0.0.1
 
     Username: root
 
     Password: root
 
-    Port: 8889
-    ```
+    Port: 8889```
 
 Create a new database titled ```knowledge_base```
 
 Make a copy of <a href="https://github.com/laravel/laravel/blob/master/.env.example" target="_blank">.env.example</a> and rename it to .env in the root of the directory. 
 
 Change the following information in .env:
-    ```
-    DB_CONNECTION=mysql
+    ```DB_CONNECTION=mysql
 
     DB_PORT=8889
 
     DB_USER=root
 
     DB_PASSWORD=root
-    
-    DB_DATABASE=knowledge_base
-    ```
+
+    DB_DATABASE=knowledge_base```
 
 Generate key
 ```html
