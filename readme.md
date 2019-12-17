@@ -1,6 +1,6 @@
 # Knowledge Base
 
-This is a knowledge base project that allows you to categorize your articles together. This was built with <a href="https://laravel.com/docs/5.8/installation" target="_blank">laravel 6</a> and PHP version 7.2, you must have these installed along with  <a href="https://www.mamp.info/en/downloads/" target="_blank">MAMP installed</a>
+This is a knowledge base project that allows you to categorize your articles together. This was built with <a href="https://laravel.com/docs/5.8/installation" target="_blank">laravel 6</a> and PHP version 7.2, you must have these installed along with <a href="https://getcomposer.org/" target="_blank">Composer</a> and <a href="https://www.mamp.info/en/downloads/" target="_blank">MAMP installed</a>
 
 ## Setting the app up
 Clone the project
