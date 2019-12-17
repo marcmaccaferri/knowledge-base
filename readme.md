@@ -44,17 +44,15 @@ php artisan migrate
 ```html 
 php artisan serve
 ```
-17. Create a user in the user table with a role of 1 (this creates an admin user) 
-18. Once you are logged in as an admin, click the button that says "Manage Categories", you will need to create a parent category, and then a sub category (you can only assign articles to sub categories)
-19. Once a sub category is created you are now able to create your first article. 
 
-#H1 Using the App:
+
+# Using the App:
 To start using the app you must first create an administrative user, this currently has to be done manually in the database. Create a user with a role of ```1```. Once you visit the homepage of the app you will see where you can manage articles, categories, and users. To create your first article you must first create a sub category. 
 
-##H2 Creating A Category:
+## Creating A Category:
 Create a name for your category and click add. To create a sub category you follow the same steps but select a parent category. Once you have a sub category created you can create your first article. Once new sub categories are created, and have an article assigned to them, they will appear with the articles on the homepage.
 
-##H2 Creating An Article: 
+## Creating An Article: 
 You must have a title, and a body for your article, along with a sub category. As of now this can only be text, functionality for adding photos will be added later. 
 
 
