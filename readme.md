@@ -3,10 +3,14 @@ To run this project you must have <a href="https://laravel.com/docs/5.8/installa
 You must also have MAMP <a href="https://www.mamp.info/en/downloads/" target="_blank">installed</a>
 
 1. Clone the project
-```git clone https://github.com/marcmaccaferri/knowledge-base.git```
+```html
+git clone https://github.com/marcmaccaferri/knowledge-base.git
+```
 2. Install all dependencies 
-```Run npm install to install all dependencies```
-```Run composer install```
+```html 
+npm install
+composer install
+```
 5.  Open MAMP
 6.  Go to MAMP prefrences 
 7.  Select Ports
@@ -15,26 +19,33 @@ You must also have MAMP <a href="https://www.mamp.info/en/downloads/" target="_b
     On PC download and install <a href="https://www.heidisql.com/download.php" target="_blank">HeidiSQL</a>
 10. Connect by using: 
     ```html
-    <br>Host: 127.0.0.1
-    <br>Username: root
-    <br>Password: root
-    <br>Port: 8889
+    Host: 127.0.0.1
+    Username: root
+    Password: root
+    Port: 8889
     ```
 11. Create a new database titled ```knowledge_base```
 12. Make a copy of <a href="https://github.com/laravel/laravel/blob/master/.env.example" target="_blank">.env.example</a> and rename it to .env in the root of the directory. 
 13. Change the following information in .env:
     ```html
-    <br>DB_CONNECTION=mysql
-    <br>DB_PORT=8889
-    <br>DB_USER=root
-    <br>DB_PASSWORD=root
-    <br>DB_DATABASE=knowledge_base
+    DB_CONNECTION=mysql
+    DB_PORT=8889
+    DB_USER=root
+    DB_PASSWORD=root
+    DB_DATABASE=knowledge_base
     ```
-14. ```php artisan key:generate```
-15. Setup migrations for the database
-```php artisan migrate``` to setup the database
+14. Generate key
+```html
+php artisan key:generate
+```
+15. Setup tables in the database
+```html
+php artisan migrate
+```
 16. Serve the app
-```php artisan serve```
+```php 
+php artisan serve
+```
 17. Create a user in the user table with a role of 1 (this creates an admin user) 
 18. Once you are logged in as an admin, click the button that says "Manage Categories", you will need to create a parent category, and then a sub category (you can only assign articles to sub categories)
 19. Once a sub category is created you are now able to create your first article. 
