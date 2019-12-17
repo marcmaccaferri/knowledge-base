@@ -3,31 +3,30 @@
 This is a knowledge base project that allows you to categorize your articles together. This was built with <a href="https://laravel.com/docs/5.8/installation" target="_blank">laravel 6</a> and PHP version 7.2, you must have these installed along with  <a href="https://www.mamp.info/en/downloads/" target="_blank">MAMP installed</a>
 
 ### Setting the app up
-1. Clone the project
+Clone the project
 ```html
 git clone https://github.com/marcmaccaferri/knowledge-base.git
 ```
-2. Install all dependencies 
+Install all dependencies 
 ```html 
 npm install
 composer install
 ```
-5.  Open MAMP
-6.  Go to MAMP prefrences 
-7.  Select Ports
-8.  Change MySQL port to ```8889```
-9.  On Mac download and install <a href="https://www.sequelpro.com" target="_blank">Sequal Pro</a>
+
+In MAMP prefrences, select ports, and assign MySQL port to ```8889```
+
+On Mac download and install <a href="https://www.sequelpro.com" target="_blank">Sequal Pro</a>
     On PC download and install <a href="https://www.heidisql.com/download.php" target="_blank">HeidiSQL</a>
-10. Connect by using: 
+Connect by using: 
     ```html
     Host: 127.0.0.1
     Username: root
     Password: root
     Port: 8889
     ```
-11. Create a new database titled ```knowledge_base```
-12. Make a copy of <a href="https://github.com/laravel/laravel/blob/master/.env.example" target="_blank">.env.example</a> and rename it to .env in the root of the directory. 
-13. Change the following information in .env:
+Create a new database titled ```knowledge_base```
+Make a copy of <a href="https://github.com/laravel/laravel/blob/master/.env.example" target="_blank">.env.example</a> and rename it to .env in the root of the directory. 
+Change the following information in .env:
     ```html
     DB_CONNECTION=mysql
     DB_PORT=8889
@@ -35,15 +34,15 @@ composer install
     DB_PASSWORD=root
     DB_DATABASE=knowledge_base
     ```
-14. Generate key
+Generate key
 ```html
 php artisan key:generate
 ```
-15. Setup tables in the database
+Setup tables in the database
 ```html
 php artisan migrate
 ```
-16. Serve the app
+Serve the app
 ```html 
 php artisan serve
 ```
