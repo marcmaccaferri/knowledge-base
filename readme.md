@@ -21,8 +21,11 @@ On PC download and install <a href="https://www.heidisql.com/download.php" targe
 Connect by using: 
     ```
     Host: 127.0.0.1
+
     Username: root
+
     Password: root
+
     Port: 8889
     ```
 
@@ -33,9 +36,13 @@ Make a copy of <a href="https://github.com/laravel/laravel/blob/master/.env.exam
 Change the following information in .env:
     ```
     DB_CONNECTION=mysql
+
     DB_PORT=8889
+
     DB_USER=root
+
     DB_PASSWORD=root
+    
     DB_DATABASE=knowledge_base
     ```
 
