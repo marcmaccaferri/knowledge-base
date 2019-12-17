@@ -1,34 +1,40 @@
 This is a knowledge base project. It allows you to create articles that can be categorized. 
-
-To run this project you must have <a href="https://laravel.com/docs/5.8/installation" target="_blank">laravel installed</a>: 
-
+To run this project you must have <a href="https://laravel.com/docs/5.8/installation" target="_blank">laravel 6 installed</a> 
 You must also have MAMP <a href="https://www.mamp.info/en/downloads/" target="_blank">installed</a>
 
-1.  Clone the project
-2.  Run npm install to install all dependencies 
-3.  Run composer install
+1. Clone the project
+```git clone https://github.com/marcmaccaferri/knowledge-base.git```
+2. Install all dependencies 
+```Run npm install to install all dependencies```
+```Run composer install```
 5.  Open MAMP
 6.  Go to MAMP prefrences 
 7.  Select Ports
-8.  Change MySQL port to 8889
-9.  On Mac download and install Sequal Pro -> https://www.sequelpro.com
-    On PC download and install HeidiSQL -> https://www.heidisql.com/download.php
+8.  Change MySQL port to ```8889```
+9.  On Mac download and install <a href="https://www.sequelpro.com" target="_blank">Sequal Pro</a>
+    On PC download and install <a href="https://www.heidisql.com/download.php" target="_blank">HeidiSQL</a>
 10. Connect by using: 
+    ```html
     <br>Host: 127.0.0.1
     <br>Username: root
     <br>Password: root
     <br>Port: 8889
-11. Create a new database titled "knowledge_base"
+    ```
+11. Create a new database titled ```knowledge_base```
 12. Make a copy of <a href="https://github.com/laravel/laravel/blob/master/.env.example" target="_blank">.env.example</a> and rename it to .env in the root of the directory. 
 13. Change the following information in .env:
+    ```html
     <br>DB_CONNECTION=mysql
     <br>DB_PORT=8889
     <br>DB_USER=root
     <br>DB_PASSWORD=root
     <br>DB_DATABASE=knowledge_base
-14. Run php artisan key:generate
-15. Run php artisan migrate to setup the database
-16. Run php artisan serve
+    ```
+14. ```php artisan key:generate```
+15. Setup migrations for the database
+```php artisan migrate``` to setup the database
+16. Serve the app
+```php artisan serve```
 17. Create a user in the user table with a role of 1 (this creates an admin user) 
 18. Once you are logged in as an admin, click the button that says "Manage Categories", you will need to create a parent category, and then a sub category (you can only assign articles to sub categories)
 19. Once a sub category is created you are now able to create your first article. 
