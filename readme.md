@@ -3,6 +3,15 @@
 This is a knowledge base project that allows you to categorize your articles together. This was built with <a href="https://laravel.com/docs/5.8/installation" target="_blank">laravel 6</a> and PHP version 7.2, you must have these installed along with <a href="https://getcomposer.org/" target="_blank">Composer</a> and <a href="https://www.mamp.info/en/downloads/" target="_blank">MAMP</a>.
 
 ## Setting the app up
+Before cloning the project, create a development directory 
+```html
+cd ~
+mkdir Development
+```
+Change into the development directory
+```html
+cd Development
+```
 Clone the project
 ```html
 git clone https://github.com/marcmaccaferri/knowledge-base.git
@@ -13,7 +22,7 @@ npm install
 composer install
 ```
 
-In MAMP prefrences, select ports, and assign MySQL port to ```8889```
+In MAMP prefrences, select ports, and make note of your MySQL port, it will be used later.
 
 On Mac download and install <a href="https://www.sequelpro.com" target="_blank">Sequal Pro</a>
 On PC download and install <a href="https://www.heidisql.com/download.php" target="_blank">HeidiSQL</a>
@@ -24,7 +33,7 @@ Connect by using
     Host: 127.0.0.1
     Username: root
     Password: root
-    Port: 8889
+    Port: (YOUR MYSQL PORT FOUND IN MAMP)
     
 
 Create a new database titled ```knowledge_base```
@@ -35,7 +44,7 @@ Change the following information in .env
 
     
     DB_CONNECTION=mysql
-    DB_PORT=8889
+    DB_PORT=(YOUR MYSQL PORT FOUND IN MAMP)
     DB_USER=root
     DB_PASSWORD=root
     DB_DATABASE=knowledge_base
@@ -51,7 +60,7 @@ Setup tables in the database
 php artisan migrate
 ```
 
-Serve the app
+Serve the app, this will provide you with the url to navigate to
 ```html 
 php artisan serve
 ```
