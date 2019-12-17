@@ -1,5 +1,8 @@
+# Knowledge Base
+
 This is a knowledge base project that allows you to categorize your articles together. This was built with <a href="https://laravel.com/docs/5.8/installation" target="_blank">laravel 6</a> and PHP version 7.2, you must have these installed along with  <a href="https://www.mamp.info/en/downloads/" target="_blank">MAMP installed</a>
 
+### Setting the app up
 1. Clone the project
 ```html
 git clone https://github.com/marcmaccaferri/knowledge-base.git
@@ -49,10 +52,10 @@ php artisan serve
 # Using the App:
 To start using the app you must first create an administrative user, this currently has to be done manually in the database. Create a user with a role of ```1```. Once you visit the homepage of the app you will see where you can manage articles, categories, and users. To create your first article you must first create a sub category. 
 
-## Creating A Category:
+### Creating A Category:
 Create a name for your category and click add. To create a sub category you follow the same steps but select a parent category. Once you have a sub category created you can create your first article. Once new sub categories are created, and have an article assigned to them, they will appear with the articles on the homepage.
 
-## Creating An Article: 
+### Creating An Article: 
 You must have a title, and a body for your article, along with a sub category. As of now this can only be text, functionality for adding photos will be added later. 
 
 
