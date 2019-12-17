@@ -16,7 +16,8 @@ composer install
 In MAMP prefrences, select ports, and assign MySQL port to ```8889```
 
 On Mac download and install <a href="https://www.sequelpro.com" target="_blank">Sequal Pro</a>
-    On PC download and install <a href="https://www.heidisql.com/download.php" target="_blank">HeidiSQL</a>
+On PC download and install <a href="https://www.heidisql.com/download.php" target="_blank">HeidiSQL</a>
+
 Connect by using: 
     ```html
     Host: 127.0.0.1
@@ -24,8 +25,11 @@ Connect by using:
     Password: root
     Port: 8889
     ```
+
 Create a new database titled ```knowledge_base```
+
 Make a copy of <a href="https://github.com/laravel/laravel/blob/master/.env.example" target="_blank">.env.example</a> and rename it to .env in the root of the directory. 
+
 Change the following information in .env:
     ```html
     DB_CONNECTION=mysql
@@ -34,14 +38,17 @@ Change the following information in .env:
     DB_PASSWORD=root
     DB_DATABASE=knowledge_base
     ```
+
 Generate key
 ```html
 php artisan key:generate
 ```
+
 Setup tables in the database
 ```html
 php artisan migrate
 ```
+
 Serve the app
 ```html 
 php artisan serve
