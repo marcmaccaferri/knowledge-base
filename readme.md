@@ -43,7 +43,7 @@ php artisan key:generate
 php artisan migrate
 ```
 16. Serve the app
-```php 
+```html 
 php artisan serve
 ```
 17. Create a user in the user table with a role of 1 (this creates an admin user) 
